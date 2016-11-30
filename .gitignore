@@ -1,2 +1,4 @@
+.idea/
 target/**
-dnt/**
+dnt/pos.xyz
+dnt/neg.xyz

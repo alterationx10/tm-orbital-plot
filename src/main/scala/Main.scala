@@ -14,7 +14,7 @@ case class Orbital(fileLines: Seq[String]) {
   private val nBlocks = grid2.nPoints * grid3.nPoints
 
   val data: Seq[GridData] = {
-    val allData= for {
+    val allData = for {
       index <- 0 until nBlocks
     } yield {
       val skip = nHeaderLines + (grid1.nPoints * index) + index
@@ -61,7 +61,6 @@ case class Grid(line: String) {
   val start: Double = data(2).toDouble
   val delta: Double = data(4).toDouble
   val nPoints: Int = data(6).toInt
-
 }
 
 case class GridData(line: String) {
@@ -74,12 +73,12 @@ case class GridData(line: String) {
 
 object Main extends App {
 
-  val fileName = "1e2u2.xyz"
+  val fileName = "dnt/1e2u2.xyz"
   val fileLines = Source.fromFile(fileName).getLines().toSeq
   val orbital: Orbital = Orbital(fileLines)
 
-  val posPw = new PrintWriter(new File("pos.xyz"))
-  val negPw = new PrintWriter(new File("neg.xyz"))
+  val posPw = new PrintWriter(new File("dnt/pos.xyz"))
+  val negPw = new PrintWriter(new File("dnt/neg.xyz"))
 
   orbital.posDensity.foreach{ d =>
     posPw.println(s"${d.x} ${d.y} ${d.z} ${d.f}")
